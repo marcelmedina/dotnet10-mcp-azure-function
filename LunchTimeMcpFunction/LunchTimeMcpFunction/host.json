@@ -1,0 +1,20 @@
+{
+    "version": "2.0",
+    "logging": {
+        "applicationInsights": {
+            "samplingSettings": {
+                "isEnabled": true,
+                "excludedTypes": "Request"
+            },
+            "enableLiveMetricsFilters": true
+        }
+    },
+    "extensions": {
+        "mcp": {
+            "instructions": "Use these tools to manage and pick lunch restaurants.",
+            "serverName": "LunchTimeMcp",
+            "serverVersion": "1.0.0",
+            "encryptClientState": true
+        }
+    }
+}

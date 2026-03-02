@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="LunchTimeMCP.Core/LunchTimeMCP.Core.csproj" />
+  <Project Path="LunchTimeMcpFunction/LunchTimeMcpFunction.csproj" />
+</Solution>
