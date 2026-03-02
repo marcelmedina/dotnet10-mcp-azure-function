@@ -34,25 +34,44 @@ public class LunchTimeMcpTools
         ToolInvocationContext context,
         [McpToolProperty(
             propertyName: "name",
-            propertyType: "string",
             description: "The name of the restaurant.",
-            required: true)]
+            IsRequired = true)]
         string name,
         [McpToolProperty(
             propertyName: "location",
-            propertyType: "string",
             description: "The location/address of the restaurant.",
-            required: true)]
+            IsRequired = true)]
         string location,
         [McpToolProperty(
             propertyName: "foodType",
-            propertyType: "string",
             description: "The type of food served (e.g., Italian, Mexican, Thai, etc.)",
-            required: true)]
+            IsRequired = true)]
         string foodType)
     {
         var restaurant = await restaurantService.AddRestaurantAsync(name, location, foodType);
         return restaurant;
+    }
+
+    [Function(nameof(DeleteRestaurant))]
+    public async Task<object> DeleteRestaurant(
+        [McpToolTrigger(
+            toolName: "delete_restaurant",
+            description: "Delete a restaurant from the lunch options by its ID.")]
+        ToolInvocationContext context,
+        [McpToolProperty(
+            propertyName: "id",
+            description: "The ID of the restaurant to delete.",
+            IsRequired = true)]
+        string id)
+    {
+        var deleted = await restaurantService.DeleteRestaurantAsync(id);
+
+        if (!deleted)
+        {
+            return new { message = $"Restaurant with ID '{id}' was not found." };
+        }
+
+        return new { message = $"Restaurant with ID '{id}' has been deleted." };
     }
 
     [Function(nameof(PickRandomRestaurant))]

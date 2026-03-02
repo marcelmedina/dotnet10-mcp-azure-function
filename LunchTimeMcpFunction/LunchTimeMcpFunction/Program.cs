@@ -25,9 +25,4 @@ builder.Services.AddSingleton(sp =>
 // Register domain services
 builder.Services.AddSingleton<RestaurantService>();
 
-// Configure MCP tool metadata
-builder.ConfigureMcpTool("get_restaurants");
-builder.ConfigureMcpTool("add_restaurant");
-builder.ConfigureMcpTool("pick_random_restaurant");
-
 builder.Build().Run();

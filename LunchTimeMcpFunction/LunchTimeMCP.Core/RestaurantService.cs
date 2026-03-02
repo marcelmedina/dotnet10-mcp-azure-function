@@ -84,6 +84,19 @@ public class RestaurantService
 
         return selected;
     }
+
+    public async Task<bool> DeleteRestaurantAsync(string id)
+    {
+        try
+        {
+            await tableClient.DeleteEntityAsync("restaurants", id);
+            return true;
+        }
+        catch (Azure.RequestFailedException ex) when (ex.Status == 404)
+        {
+            return false;
+        }
+    }
 }
 
 public class Restaurant
