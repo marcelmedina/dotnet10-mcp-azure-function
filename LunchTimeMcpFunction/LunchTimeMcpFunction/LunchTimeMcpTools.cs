@@ -35,17 +35,20 @@ public class LunchTimeMcpTools
         [McpToolProperty(
             propertyName: "name",
             propertyType: "string",
-            description: "The name of the restaurant.")]
+            description: "The name of the restaurant.",
+            required: true)]
         string name,
         [McpToolProperty(
             propertyName: "location",
             propertyType: "string",
-            description: "The location/address of the restaurant.")]
+            description: "The location/address of the restaurant.",
+            required: true)]
         string location,
         [McpToolProperty(
             propertyName: "foodType",
             propertyType: "string",
-            description: "The type of food served (e.g., Italian, Mexican, Thai, etc.)")]
+            description: "The type of food served (e.g., Italian, Mexican, Thai, etc.)",
+            required: true)]
         string foodType)
     {
         var restaurant = await restaurantService.AddRestaurantAsync(name, location, foodType);
